@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-Logistics Procedure</title>
+  <style>
+    /* Gaya Umum */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-color: #f0f2f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+     footer {
+            background-color: transparent;
+            color: black;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+
+    /* Kontainer Login */
+    .login-container {
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    /* Logo */
+    .login-logo {
+      width: 100px;
+      margin: 0 auto 20px;
+    }
+
+    .login-logo img {
+      width: 100%;
+      height: auto;
+    }
+
+    /* Judul */
+    .login-container h2 {
+      margin-bottom: 20px;
+      color: #333;
+      font-size: 24px;
+    }
+
+    /* Input */
+    .login-container input[type="text"],
+    .login-container input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    /* Tombol Login */
+    .login-container button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 5px;
+      background-color: #007bff;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .login-container button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <!-- Logo -->
+    <div class="login-logo">
+      <img src="EVOTY.png" alt="Company Logo">
+    </div>
+
+    <!-- Judul Halaman -->
+    <h2>Selamat Datang!</h2>
+
+    <!-- Form Pencatatan -->
+    <form id="recordForm">
+      <input type="text" id="name" name="name" placeholder="Nama" required>
+      <input type="text" id="employeeId" name="employeeId" placeholder="Nomor Pegawai" required>
+      <button type="button" onclick="recordData()">Masuk</button>
+    </form>
+  </div>
+
+  <script>
+    // Fungsi untuk mencatat data
+    function recordData() {
+      // Ambil nilai dari input
+      const name = document.getElementById("name").value;
+      const employeeId = document.getElementById("employeeId").value;
+
+      if (!name || !employeeId) {
+        alert("Harap isi semua kolom!");
+        return;
+      }
+
+      // Simpan data ke Local Storage (sebagai simulasi pencatatan)
+      const records = JSON.parse(localStorage.getItem("employeeRecords")) || [];
+      records.push({ name, employeeId, timestamp: new Date().toISOString() });
+      localStorage.setItem("employeeRecords", JSON.stringify(records));
+
+      // Arahkan ke halaman Home (simulasi)
+      alert(`Data berhasil dicatat:\nNama: ${name}\nNomor Pegawai: ${employeeId}`);
+      window.location.href = "home.html"; // Ubah ke URL halaman Home Anda
+    }
+  </script>
+<footer>
+        &copy; 2024 Inventory Finished Goods
+    </footer>
+</body>
+</html>
