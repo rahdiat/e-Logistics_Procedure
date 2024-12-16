@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List Work Instruction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 10vh;
+        }
+        header img {
+            max-width: 200px;
+            height: auto;
+        }
+        main {
+            padding: 20px;
+            flex: 1;
+        }
+        .search-container {
+            margin-bottom: 20px;
+        }
+        .search-container input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table, th, td {
+            border: 1px solid #000;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        a {
+            text-decoration: none;
+            color: #007BFF;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        footer {
+            background-color: #470101;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+    <script>
+        function filterTable() {
+            const searchInput = document.getElementById('searchInput').value.toLowerCase();
+            const tableRows = document.querySelectorAll('tbody tr');
+
+            tableRows.forEach(row => {
+                const processText = row.cells[0].textContent.toLowerCase();
+                const linkText = row.cells[1].textContent.toLowerCase();
+
+                if (processText.includes(searchInput) || linkText.includes(searchInput)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <img src="EVOTY.png" alt="Company Logo"> 
+    </header>
+    <main>
+        <div class="search-container">
+            <input type="text" id="searchInput" onkeyup="filterTable()" placeholder="Pencarian Work Instruction...">
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Process</th>
+                    <th>Link</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>PROSES PUT AWAY LOKASI</td>
+                    <td><a href="WI/PROSES PUT AWAY LOKASI.html">WI-FG-0016-00 PROSES PUT AWAY LOKASI</a></td>
+                </tr>
+                <tr>
+                    <td>Proses Inbound & Outbound Confirm PTBS (PLB Warehouse)</td>
+                    <td><a href="WI/Proses Inbound & Outbound Confirm PTBS (PLB Warehouse).html">WI-FG-0032-01 Proses Inbound & Outbound Confirm PTBS (PLB Warehouse)</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>
