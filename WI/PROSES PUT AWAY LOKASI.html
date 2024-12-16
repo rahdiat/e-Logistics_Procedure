@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PROSES PUT AWAY LOKASI</title>
+    <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
     <style>
         /* Reset CSS */
         * {
@@ -43,11 +44,10 @@
             padding: 10px;
         }
 
-        iframe {
-            width: 100%;
-            height: 80vh;
-            border: none;
+        canvas {
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            max-width: 100%;
+            height: auto;
         }
 
         /* Footer */
@@ -69,8 +69,8 @@
                 max-width: 120px;
             }
 
-            iframe {
-                height: 60vh; /* Sesuaikan tinggi iframe untuk layar kecil */
+            canvas {
+                height: auto;
             }
 
             footer {
@@ -81,10 +81,6 @@
         @media (max-width: 480px) {
             header img {
                 max-width: 100px;
-            }
-
-            iframe {
-                height: 50vh; /* Lebih kecil untuk layar ponsel */
             }
 
             footer {
@@ -101,12 +97,48 @@
 
     <!-- Main Content -->
     <main>
-        <iframe src="../Work instruction/WI-FG-0016-00 PROSES PUT AWAY LOKASI.pdf" title="Work Instruction"></iframe>
+        <canvas id="pdf-render"></canvas>
     </main>
 
     <!-- Footer -->
     <footer>
         <p></p>
     </footer>
+
+    <!-- PDF.js Script -->
+    <script>
+        // URL PDF yang ingin ditampilkan
+        const pdfUrl = "../Work instruction/WI-FG-0032-01 Proses Inbound  & Outbound Confirm PTBS ( PLB Warehouse ).pdf";
+        
+        // Referensi ke elemen canvas
+        const canvas = document.getElementById('pdf-render');
+        const context = canvas.getContext('2d');
+
+        // Inisialisasi PDF.js
+        const loadingTask = pdfjsLib.getDocument(pdfUrl);
+
+        // Load PDF
+        loadingTask.promise.then(pdf => {
+            console.log('PDF loaded');
+
+            // Ambil halaman pertama
+            pdf.getPage(1).then(page => {
+                console.log('Page loaded');
+
+                const viewport = page.getViewport({ scale: 1.5 });
+                canvas.height = viewport.height;
+                canvas.width = viewport.width;
+
+                // Render halaman ke canvas
+                const renderContext = {
+                    canvasContext: context,
+                    viewport: viewport
+                };
+                page.render(renderContext);
+            });
+        }).catch(err => {
+            console.error('Error loading PDF:', err);
+        });
+    </script>
 </body>
 </html>
