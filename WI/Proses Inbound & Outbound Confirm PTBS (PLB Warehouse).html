@@ -1,19 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PROSES PUT AWAY LOKASI</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        /* Reset CSS */
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
             background-color: #f4f4f9;
             display: flex;
             flex-direction: column;
-            min-height: 10vh;
+            min-height: 100vh;
         }
+
+        /* Header Style */
         header {
             background-color: #f0f2f5;
             display: flex;
@@ -21,32 +30,83 @@
             align-items: center;
             height: 10vh;
         }
+
         header img {
-            max-width: 200px;
+            max-width: 150px;
             height: auto;
         }
+
+        /* Main Content */
         main {
-            padding: 20px;
             flex: 1;
             display: flex;
             justify-content: center;
             align-items: center;
+            padding: 10px;
         }
+
         iframe {
-            width: 90%;
+            width: 100%;
             height: 80vh;
             border: none;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #f0f2f5;
+            text-align: center;
+            padding: 10px;
+            font-size: 14px;
+            color: #333;
+        }
+
+        /* Media Query untuk Layar Kecil */
+        @media (max-width: 768px) {
+            header {
+                height: 8vh;
+            }
+
+            header img {
+                max-width: 120px;
+            }
+
+            iframe {
+                height: 60vh; /* Sesuaikan tinggi iframe untuk layar kecil */
+            }
+
+            footer {
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header img {
+                max-width: 100px;
+            }
+
+            iframe {
+                height: 50vh; /* Lebih kecil untuk layar ponsel */
+            }
+
+            footer {
+                font-size: 10px;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Header -->
     <header>
-        <img src="../EVOTY.png" alt="Company Logo"> 
+        <img src="../EVOTY.png" alt="Company Logo">
     </header>
+
+    <!-- Main Content -->
     <main>
         <iframe src="../Work instruction/WI-FG-0032-01 Proses Inbound  & Outbound Confirm PTBS ( PLB Warehouse ).pdf" title="Work Instruction"></iframe>
     </main>
+
+    <!-- Footer -->
     <footer>
         <p></p>
     </footer>
