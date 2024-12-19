@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Work Instruction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 10vh;
+        }
+        header img {
+            max-width: 200px;
+            height: auto;
+        }
+        main {
+            padding: 20px;
+            flex: 1;
+        }
+        .search-container {
+            margin-bottom: 20px;
+        }
+        .search-container input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .video-item {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .video-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+        .video-item iframe {
+            width: 100%;
+            height: 200px;
+        }
+        .video-item a {
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            color: #007BFF;
+            font-weight: bold;
+        }
+        .video-item a:hover {
+            text-decoration: underline;
+        }
+        footer {
+            background-color: rgba(30, 144, 255, 0.85);
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const searchInput = document.getElementById('searchInput');
+            const videoItems = document.querySelectorAll('.video-item');
+
+            searchInput.addEventListener('input', () => {
+                const searchValue = searchInput.value.toLowerCase();
+
+                videoItems.forEach(item => {
+                    const videoTitle = item.querySelector('a').textContent.toLowerCase();
+
+                    if (videoTitle.includes(searchValue)) {
+                        item.style.display = '';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <a href="Home.html"><img src="EVOTY.png" alt="Company Logo"></a> 
+    </header>
+    <main>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Pencarian Work Instruction...">
+        </div>
+        <div class="video-grid">
+            <div class="video-item">
+                <iframe src="test.mp4" frameborder="0" allowfullscreen></iframe>
+                <a href="">WI-FG-0016-00 PROSES PUT AWAY LOKASI</a> 
+            </div>
+            <div class="video-item">
+                <iframe src="test.mp4" frameborder="0" allowfullscreen></iframe>
+                <a href="">WI-FG-0032-01 Proses Inbound & Outbound Confirm PTBS</a>
+            </div>
+            <div class="video-item">
+                <iframe src="test.mp4" frameborder="0" allowfullscreen></iframe>
+                <a href="">WI-FG-0045-00 PROSES AUDIT INVENTORY</a>
+            </div>
+        </div>
+    </main>
+    <footer>
+        &copy; 2024 Inventory Finish Goods
+    </footer>
+</body>
+</html>
