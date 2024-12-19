@@ -44,16 +44,25 @@
             width: 100%;
             border-collapse: collapse;
             margin: 20px 0;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
         }
-        table, th, td {
-            border: 1px solid #000;
-        }
-        th, td {
-            padding: 10px;
+        table th, table td {
+            padding: 12px 15px;
             text-align: left;
         }
-        th {
-            background-color: #f2f2f2;
+        table thead th {
+            background-color: #007BFF;
+            color: white;
+            font-weight: bold;
+        }
+        table tbody tr:nth-child(odd) {
+            background-color: #f9f9f9;
+        }
+        table tbody tr:hover {
+            background-color: #f1f1f1;
         }
         a {
             text-decoration: none;
@@ -63,7 +72,7 @@
             text-decoration: underline;
         }
         footer {
-            background-color: #470101;
+            background-color: rgba(30, 144, 255, 0.85);
             color: white;
             text-align: center;
             padding: 10px 0;
@@ -73,30 +82,34 @@
         }
     </style>
     <script>
-        function filterTable() {
-            const searchInput = document.getElementById('searchInput').value.toLowerCase();
+        document.addEventListener('DOMContentLoaded', () => {
+            const searchInput = document.getElementById('searchInput');
             const tableRows = document.querySelectorAll('tbody tr');
 
-            tableRows.forEach(row => {
-                const processText = row.cells[0].textContent.toLowerCase();
-                const linkText = row.cells[1].textContent.toLowerCase();
+            searchInput.addEventListener('input', () => {
+                const searchValue = searchInput.value.toLowerCase();
 
-                if (processText.includes(searchInput) || linkText.includes(searchInput)) {
-                    row.style.display = '';
-                } else {
-                    row.style.display = 'none';
-                }
+                tableRows.forEach(row => {
+                    const processText = row.cells[0].textContent.toLowerCase();
+                    const linkText = row.cells[1].textContent.toLowerCase();
+
+                    if (processText.includes(searchValue) || linkText.includes(searchValue)) {
+                        row.style.display = '';
+                    } else {
+                        row.style.display = 'none';
+                    }
+                });
             });
-        }
+        });
     </script>
 </head>
 <body>
     <header>
-        <a href="Home.html"><img src="EVOTY.png" alt="Company Logo"></a>
+        <img src="EVOTY.png" alt="Company Logo"> 
     </header>
     <main>
         <div class="search-container">
-            <input type="text" id="searchInput" onkeyup="filterTable()" placeholder="Pencarian Work Instruction...">
+            <input type="text" id="searchInput" placeholder="Pencarian Work Instruction...">
         </div>
         <table>
             <thead>
@@ -117,5 +130,8 @@
             </tbody>
         </table>
     </main>
+    <footer>
+        &copy; 2024 Inventory Finish  Goods
+    </footer>
 </body>
 </html>
